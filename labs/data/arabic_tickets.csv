@@ -1,0 +1,109 @@
+text,intent,dialect
+أريد إلغاء الطلب رقم A-48213 لأنني لم أعد بحاجة إليه,cancel_order,msa
+كيف ألغي طلبي؟ طلبته بالغلط,cancel_order,gulf
+ابي اكنسل الطلب قبل لا يتشحن,cancel_order,gulf
+الرجاء إلغاء طلبي فوراً قبل شحنه,cancel_order,msa
+أرغب في تعديل الكمية في طلبي الأخير,change_order,msa
+ابي اغير المقاس في الطلب اللي سويته قبل شوي,change_order,gulf
+هل يمكنني إضافة منتج آخر إلى الطلب A-30581؟,change_order,msa
+غلطت في اللون، ودي اعدل الطلب,change_order,gulf
+أريد تغيير عنوان التوصيل لطلبي,change_shipping_address,msa
+العنوان غلط في الطلب ابي اغيره لحي النرجس,change_shipping_address,gulf
+انتقلت إلى شقة جديدة، كيف أحدث عنوان الشحن للطلب الحالي؟,change_shipping_address,msa
+ممكن توصلون الطلب على عنوان شغلي بدل البيت؟,change_shipping_address,gulf
+كم رسوم إلغاء الطلب بعد الشحن؟,check_cancellation_fee,msa
+فيه غرامة لو كنسلت الطلب؟,check_cancellation_fee,gulf
+هل توجد رسوم على إلغاء طلب الأثاث؟,check_cancellation_fee,msa
+لو رفضت الاستلام بيخصمون علي شي؟,check_cancellation_fee,gulf
+أريد مراجعة الفاتورة رقم INV-2024-00731,check_invoice,msa
+الفاتورة فيها مبلغ مو واضح ابي اتأكد منه,check_invoice,gulf
+هل الضريبة مضافة في فاتورتي؟,check_invoice,msa
+ابي اشوف تفاصيل الفاتورة حقت الطلب الأخير,check_invoice,gulf
+ما هي طرق الدفع المتاحة لديكم؟,check_payment_methods,msa
+تقبلون مدى ولا بس فيزا؟,check_payment_methods,gulf
+هل يمكن الدفع عند الاستلام؟,check_payment_methods,msa
+اقدر ادفع بأبل باي؟,check_payment_methods,gulf
+ما هي سياسة الاسترجاع لديكم؟,check_refund_policy,msa
+كم يوم عندي عشان ارجع المنتج؟,check_refund_policy,gulf
+هل يمكن استرداد المبلغ للمنتجات المخفضة؟,check_refund_policy,msa
+وش الشروط عشان ارجع القطعة واسترد فلوسي؟,check_refund_policy,gulf
+خدمتكم سيئة جداً والمندوب تعامل معي بطريقة غير لائقة,complaint,msa
+والله شي ما يصير، ثالث مرة يتأخر الطلب!!,complaint,gulf
+أرغب في تقديم شكوى رسمية على الموظف,complaint,msa
+تجربة سيئة مرة، المنتج وصل مكسور وما احد رد علي,complaint,gulf
+كيف أتواصل مع خدمة العملاء؟,contact_customer_service,msa
+ابي رقم خدمة العملاء,contact_customer_service,gulf
+ما هي ساعات عمل الدعم الفني؟,contact_customer_service,msa
+وين القى طريقة اتواصل معكم؟,contact_customer_service,gulf
+أريد التحدث مع موظف حقيقي وليس روبوت,contact_human_agent,msa
+ابي اكلم موظف الحين لو سمحت,contact_human_agent,gulf
+حولني على أحد من الموظفين,contact_human_agent,gulf
+هل يمكنني التحدث مع ممثل خدمة عملاء بشري؟,contact_human_agent,msa
+أريد إنشاء حساب جديد,create_account,msa
+كيف اسوي حساب عندكم؟,create_account,gulf
+ما هي خطوات التسجيل في الموقع؟,create_account,msa
+ودي افتح حساب جديد بإيميلي,create_account,gulf
+أرغب في حذف حسابي نهائياً,delete_account,msa
+ابي امسح حسابي وبياناتي كلها,delete_account,gulf
+كيف أغلق حسابي لديكم؟,delete_account,msa
+احذفوا حسابي لو سمحتوا ما عاد ابيه,delete_account,gulf
+ما هي خيارات التوصيل المتاحة؟,delivery_options,msa
+عندكم توصيل بنفس اليوم؟,delivery_options,gulf
+هل يوجد توصيل سريع إلى الدمام؟,delivery_options,msa
+اقدر استلم الطلب من نقطة استلام؟,delivery_options,gulf
+كم يستغرق التوصيل إلى جدة؟,delivery_period,msa
+متى يوصل الطلب عادة؟,delivery_period,gulf
+كم يوم يحتاج الشحن العادي؟,delivery_period,msa
+لو طلبت اليوم متى يوصلني؟,delivery_period,gulf
+أريد تعديل رقم الجوال في حسابي,edit_account,msa
+ابي اغير الايميل حقي في الحساب,edit_account,gulf
+كيف أحدّث بياناتي الشخصية؟,edit_account,msa
+ودي اغير اسمي في الحساب,edit_account,gulf
+أحتاج نسخة من فاتورة طلبي,get_invoice,msa
+ابي الفاتورة الضريبية للطلب A-77120,get_invoice,gulf
+كيف أحصل على فاتورة الشراء؟,get_invoice,msa
+ارسلولي الفاتورة على الايميل,get_invoice,gulf
+أريد استرداد المبلغ لأن المنتج وصل تالفاً,get_refund,msa
+ابي فلوسي ترجع، المنتج ما يشتغل,get_refund,gulf
+كيف أطلب استرجاع المبلغ؟,get_refund,msa
+رجعوا لي فلوسي بسرعة لو سمحت,get_refund,gulf
+أريد الاشتراك في النشرة البريدية,newsletter_subscription,msa
+ابي الغي اشتراكي في الرسائل الترويجية,newsletter_subscription,gulf
+كيف أوقف رسائل العروض على بريدي؟,newsletter_subscription,msa
+سجلوني في النشرة عشان توصلني العروض,newsletter_subscription,gulf
+تم خصم المبلغ مرتين من بطاقتي!!,payment_issue,msa
+الدفع ما ضبط بس انخصم المبلغ من حسابي,payment_issue,gulf
+فشلت عملية الدفع عدة مرات، ما المشكلة؟,payment_issue,msa
+انسحبت الفلوس مرتين على نفس الطلب عاجل,payment_issue,gulf
+أرغب في تقديم طلب شراء جديد,place_order,msa
+ابي اطلب جوال من عندكم كيف؟,place_order,gulf
+كيف أقوم بعملية شراء من الموقع؟,place_order,msa
+ودي اشتري هالمنتج وش الطريقة؟,place_order,gulf
+نسيت كلمة المرور ولا أستطيع الدخول,recover_password,msa
+نسيت الباسوورد ابي استرجعه,recover_password,gulf
+كيف أعيد تعيين كلمة المرور؟,recover_password,msa
+حسابي انقفل وما اقدر ادخل,recover_password,gulf
+لا يصلني رمز التحقق عند التسجيل,registration_problems,msa
+احاول اسجل وما يرضى يقبل رقمي,registration_problems,gulf
+تظهر رسالة خطأ عند إنشاء الحساب,registration_problems,msa
+التسجيل يعلق عندي ما يكمل,registration_problems,gulf
+أود كتابة تقييم للمنتج الذي اشتريته,review,msa
+ابي اكتب رأيي عن الخدمة,review,gulf
+أين يمكنني إضافة مراجعة للمنتج؟,review,msa
+ودي اقيم المنتج، المنتج ممتاز,review,gulf
+أريد إضافة عنوان شحن جديد في حسابي,set_up_shipping_address,msa
+كيف اضيف عنواني الوطني؟,set_up_shipping_address,gulf
+أرغب في حفظ عنوان افتراضي للتوصيل,set_up_shipping_address,msa
+ابي اضبط عنوان التوصيل في الحساب,set_up_shipping_address,gulf
+أريد تحويل حسابي من شخصي إلى حساب أعمال,switch_account,msa
+ابي احول الحساب لحساب شركة,switch_account,gulf
+كيف أنتقل إلى نوع حساب مختلف؟,switch_account,msa
+ودي اغير نوع حسابي,switch_account,gulf
+أين طلبي؟ لم يصل حتى الآن,track_order,msa
+وين طلبي؟ صار له أسبوع,track_order,gulf
+أريد تتبع الشحنة الخاصة بالطلب A-55821,track_order,msa
+متى يوصل طلبي؟ ابي رقم التتبع,track_order,gulf
+لم يصلني المبلغ المسترد حتى الآن,track_refund,msa
+وين وصل استرجاع فلوسي؟,track_refund,gulf
+ما هي حالة طلب الاسترداد الخاص بي؟,track_refund,msa
+صار لي عشرة ايام وما رجع المبلغ,track_refund,gulf

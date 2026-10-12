@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+labs/.env
+labs/cache/
+labs/artifacts/
+labs/runs/
+labs/data/tickets_*.csv
+labs/data/labels.json
+!labs/data/arabic_tickets.csv

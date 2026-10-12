@@ -1,0 +1,38 @@
+[project]
+name = "applied-nlp-labs"
+version = "1.0.0"
+description = "Lab notebooks for the SDAIA Academy Applied NLP Engineering bootcamp"
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "torch>=2.4",
+    "transformers>=4.56",
+    "tokenizers>=0.20",
+    "datasets>=3.0",
+    "accelerate>=1.0",
+    "peft>=0.13",
+    "sentence-transformers>=3.2",
+    "faiss-cpu>=1.8",
+    "rank-bm25>=0.2.2",
+    "scikit-learn>=1.5",
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "matplotlib>=3.8",
+    "pydantic>=2.7",
+    "openai>=1.50",
+    "python-dotenv>=1.0",
+    "sentencepiece>=0.2",
+    "protobuf>=4.25",
+    "gradio>=4.44",
+    "fastapi>=0.110",
+    "uvicorn>=0.30",
+    "umap-learn>=0.5",
+    "jupyterlab>=4.2",
+    "ipywidgets>=8.1",
+]
+
+[project.optional-dependencies]
+# 4-bit loading for QLoRA (Linux + NVIDIA GPU only)
+qlora = ["bitsandbytes>=0.44"]
+
+[tool.uv]
+package = false

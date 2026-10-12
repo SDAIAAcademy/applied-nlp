@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Applied NLP Engineering</title>
+<link rel="icon" href="assets/img/academy.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+Arabic:wght@400;600;700&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1c355e; --teal: #00ae8d; --coral: #e96852; --cyan: #00c1de; --amber: #ffb548; --purple: #625d9c;
+    --ink: #101820; --paper: #f7f5f0; --paper-2: #efece4; --line: #d4d0c5; --muted: #5b6472;
+    --font: "IBM Plex Sans", "IBM Plex Sans Arabic", system-ui, sans-serif; --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.55 var(--font); }
+  a { color: var(--teal); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  header {
+    background: radial-gradient(900px 500px at 85% 0%, rgba(0,174,141,.25), transparent 60%),
+                radial-gradient(700px 400px at 0% 100%, rgba(255,181,72,.18), transparent 60%), var(--navy);
+    color: #fff; padding: 28px 0 56px;
+  }
+  .logo { height: 44px; color: #fff; display: flex; }
+  .logo svg { height: 100%; width: auto; }
+  .kicker { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--amber); margin: 48px 0 10px; }
+  h1 { font-size: clamp(34px, 6vw, 58px); line-height: 1.05; margin: 0 0 14px; letter-spacing: -.01em; }
+  header p { color: rgba(255,255,255,.8); font-size: 20px; max-width: 760px; margin: 0; }
+  .meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .meta span { font-size: 14px; padding: 6px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.3); }
+  .meta span.track { background: var(--amber); color: var(--ink); border-color: var(--amber); font-weight: 600; }
+  h2 { color: var(--navy); font-size: 28px; margin: 56px 0 16px; }
+  h3 { color: var(--navy); margin: 0 0 6px; font-size: 20px; }
+  .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .card { background: #fff; border: 1px solid var(--line); border-top: 5px solid var(--c, var(--navy)); border-radius: 14px; padding: 20px; }
+  .card p { margin: 0; color: var(--muted); font-size: 15px; }
+  .day { background: #fff; border: 1px solid var(--line); border-radius: 16px; margin-bottom: 18px; overflow: hidden; }
+  .day-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 22px; border-left: 8px solid var(--c); }
+  .day-head .t { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--c); font-weight: 700; }
+  .day-head h3 { font-size: 22px; margin: 2px 0 0; }
+  .btn { display: inline-block; text-decoration: none; background: var(--navy); color: #fff; padding: 9px 16px; border-radius: 10px; font-weight: 600; font-size: 15px; }
+  .btn:hover { background: #142846; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  td, th { padding: 10px 22px; border-top: 1px solid var(--paper-2); text-align: left; vertical-align: top; }
+  th { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+    td.brk { color: var(--muted); font-style: italic; }
+  code { font-family: var(--mono); font-size: 13.5px; background: rgba(28,53,94,.07); padding: 1px 6px; border-radius: 5px; }
+  .two { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  ul { padding-left: 20px; } li { margin-bottom: 6px; }
+  .bar { display: grid; grid-template-columns: 1fr 52px; gap: 10px; align-items: center; margin-bottom: 8px; font-size: 15px; }
+  .bar i { display: block; height: 10px; border-radius: 5px; background: var(--c, var(--teal)); width: var(--w); margin-top: 4px; }
+  footer { margin: 64px 0 0; padding: 24px 0 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  .scroll { overflow-x: auto; }
+  @media (max-width: 640px) { td, th { padding: 9px 12px; } .day-head { padding: 16px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="logo" id="logo"></div>
+    <div class="kicker">AI Engineering Track · Bootcamp</div>
+    <h1>Applied NLP Engineering</h1>
+    <p>From tokens to fine-tuned language models: build, evaluate and adapt practical NLP systems for English and Arabic text.</p>
+    <div class="meta">
+      <span class="track">AI Engineering Track</span>
+      <span>3 teaching days × 4h + capstone day</span>
+      <span>12 training hours</span>
+      <span>~25% concepts · ~75% hands-on Python</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <h2>One case study, all week</h2>
+  <p><b>Intelligent Support Ticket Processing.</b> Given an English or Arabic customer message, identify its intent, find similar historical cases, assign a category and priority, and draft a grounded recommended reply. Every lab adds a component to this system.</p>
+  <div class="grid">
+    <div class="card" style="--c:var(--teal)"><h3>Represent</h3><p>Tokenization, embeddings, transformers, decision models</p></div>
+    <div class="card" style="--c:var(--cyan)"><h3>Generate</h3><p>LLMs, decoding, structured outputs, RAG, model selection</p></div>
+    <div class="card" style="--c:var(--coral)"><h3>Adapt</h3><p>Encoder fine-tuning, LoRA for LLMs, evaluation, serving</p></div>
+    <div class="card" style="--c:var(--amber)"><h3>Demonstrate</h3><p>Team capstones: live demo, results, technical Q&amp;A</p></div>
+  </div>
+
+  <h2>Schedule and materials</h2>
+  <p style="color:var(--muted)">Each day: Session 1 → 10' break → Session 2 → 20' break → Session 3 → 10' break → Session 4. In the slides press <code>F</code> for fullscreen, <code>←</code> <code>→</code> to navigate, <code>N</code> for speaker notes, <code>?</code> for help.</p>
+
+  <div class="day">
+    <div class="day-head" style="--c:var(--teal)"><div><div class="t">Day 1</div><h3>Text Representation &amp; Transformer Foundations</h3></div><a class="btn" href="slides/day1.html">Open slides →</a></div>
+    <div class="scroll"><table>
+      <tr><th>Session</th><th>Lab notebook (opens in Colab)</th></tr>
+      <tr><td><b>1 · Tokenization</b>: BPE/WordPiece, IDs, masks, Arabic fertility</td><td><a href="https://colab.research.google.com/github/SDAIAAcademy/applied-nlp/blob/main/labs/D1_1_tokenization.ipynb">D1_1_tokenization</a></td></tr>
+      <tr><td class="brk" colspan="2">Break · 10 min</td></tr>
+      <tr><td><b>2 · Embeddings &amp; semantic search</b>: cosine, pooling, FAISS, Hit@k/MRR</td><td><a href="https://colab.research.google.com/github/SDAIAAcademy/applied-nlp/blob/main/labs/D1_2_embeddings_semantic_search.ipynb">D1_2_embeddings_semantic_search</a></td></tr>
+      <tr><td class="brk" colspan="2">Break · 20 min</td></tr>
+      <tr><td><b>3 · Inside the transformer</b>: attention, encoder vs. decoder, Hugging Face</td><td><a href="https://colab.research.google.com/github/SDAIAAcademy/applied-nlp/blob/main/labs/D1_3_transformers_inside.ipynb">D1_3_transformers_inside</a></td></tr>
+      <tr><td class="brk" colspan="2">Break · 10 min</td></tr>
+      <tr><td><b>4 · Decision models</b>: zero-shot, embeddings + LR, F1, thresholds</td><td><a href="https://colab.research.google.com/github/SDAIAAcademy/applied-nlp/blob/main/labs/D1_4_decision_models.ipynb">D1_4_decision_models</a></td></tr>
+    </table></div>
+  </div>
+
+  <div class="day">
+    <div class="day-head" style="--c:var(--cyan)"><div><div class="t">Day 2</div><h3>LLMs &amp; Applied NLP Systems</h3></div><a class="btn" href="slides/day2.html">Open slides →</a></div>
+    <div class="scroll"><table>
+      <tr><th>Session</th><th>Lab notebook (opens in Colab)</th></tr>
+      <tr><td><b>1 · Generative LLMs</b>: next-token prediction, chat templates, decoding</td><td><a href="https://colab.research.google.com/github/SDAIAAcademy/applied-nlp/blob/main/labs/D2_1_generative_llms.ipynb">D2_1_generative_llms</a></td></tr>
+      <tr><td class="brk" colspan="2">Break · 10 min</td></tr>
+      <tr><td><b>2 · Prompting &amp; structured outputs</b>: few-shot, schemas, validation, injection</td><td><a href="https://colab.research.google.com/github/SDAIAAcademy/applied-nlp/blob/main/labs/D2_2_prompting_structured_outputs.ipynb">D2_2_prompting_structured_outputs</a></td></tr>
+      <tr><td class="brk" colspan="2">Break · 20 min</td></tr>
+      <tr><td><b>3 · Retrieval-augmented generation</b>: chunking, hybrid search, reranking, citations</td><td><a href="https://colab.research.google.com/github/SDAIAAcademy/applied-nlp/blob/main/labs/D2_3_rag.ipynb">D2_3_rag</a></td></tr>
+      <tr><td class="brk" colspan="2">Break · 10 min</td></tr>
+      <tr><td><b>4 · Model selection &amp; evaluation</b>: encoder vs. LLM, latency, cost, cascade</td><td><a href="https://colab.research.google.com/github/SDAIAAcademy/applied-nlp/blob/main/labs/D2_4_model_selection_evaluation.ipynb">D2_4_model_selection_evaluation</a></td></tr>
+    </table></div>
+  </div>
+
+  <div class="day">
+    <div class="day-head" style="--c:var(--coral)"><div><div class="t">Day 3</div><h3>Fine-Tuning &amp; NLP Engineering</h3></div><a class="btn" href="slides/day3.html">Open slides →</a></div>
+    <div class="scroll"><table>
+      <tr><th>Session</th><th>Lab notebook (opens in Colab)</th></tr>
+      <tr><td><b>1 · Fine-tuning fundamentals &amp; data</b>: splits, leakage, imbalance, Datasets</td><td><a href="https://colab.research.google.com/github/SDAIAAcademy/applied-nlp/blob/main/labs/D3_1_finetuning_data_prep.ipynb">D3_1_finetuning_data_prep</a></td></tr>
+      <tr><td class="brk" colspan="2">Break · 10 min</td></tr>
+      <tr><td><b>2 · Fine-tune a decision model</b>: classification head, Trainer, early stopping</td><td><a href="https://colab.research.google.com/github/SDAIAAcademy/applied-nlp/blob/main/labs/D3_2_finetune_encoder.ipynb">D3_2_finetune_encoder</a> (GPU)</td></tr>
+      <tr><td class="brk" colspan="2">Break · 20 min</td></tr>
+      <tr><td><b>3 · LLM adaptation</b>: SFT, LoRA/QLoRA, loss masking, FT vs. RAG</td><td><a href="https://colab.research.google.com/github/SDAIAAcademy/applied-nlp/blob/main/labs/D3_3_lora_llm.ipynb">D3_3_lora_llm</a> (GPU)</td></tr>
+      <tr><td class="brk" colspan="2">Break · 10 min</td></tr>
+      <tr><td><b>4 · Evaluate, deploy &amp; capstone kickoff</b>: leaderboard, error analysis, Gradio</td><td><a href="https://colab.research.google.com/github/SDAIAAcademy/applied-nlp/blob/main/labs/D3_4_evaluate_deploy.ipynb">D3_4_evaluate_deploy</a></td></tr>
+    </table></div>
+  </div>
+
+  <div class="day">
+    <div class="day-head" style="--c:var(--amber)"><div><div class="t">Day 4</div><h3>Capstone Project Presentations</h3></div><a class="btn" href="slides/day4.html">Open slides →</a></div>
+    <div class="scroll"><table>
+      <tr><th>Session</th><th>Notes</th></tr>
+      <tr><td><b>1 · Opening + presentations</b></td><td>Expectations (15'), teams 1–2</td></tr>
+      <tr><td class="brk" colspan="2">Break · 10 min</td></tr>
+      <tr><td><b>2 · Presentations</b></td><td>Teams 3–5</td></tr>
+      <tr><td class="brk" colspan="2">Break · 20 min</td></tr>
+      <tr><td><b>3 · Presentations</b></td><td>Teams 6–8</td></tr>
+      <tr><td class="brk" colspan="2">Break · 10 min</td></tr>
+      <tr><td><b>4 · Final presentations, review &amp; closing</b></td><td>Teams 9–10, peer feedback, lessons learned</td></tr>
+    </table></div>
+  </div>
+
+  <div class="two">
+    <div>
+      <h2>Capstone</h2>
+      <p>Teams of 2–3 build an applied NLP solution, choosing one of:</p>
+      <ul>
+        <li><b>Intelligent Support Ticket Assistant</b>: classify, retrieve similar cases, draft grounded replies</li>
+        <li><b>Arabic Document Intelligence</b>: extract and categorize; answer questions with evidence</li>
+        <li><b>Voice of Customer Analyzer</b>: classify feedback, cluster issues, summarize insights</li>
+      </ul>
+      <p>Submit a repository with working code, README, evaluation results and sample inputs/outputs. Template: <a href="https://github.com/SDAIAAcademy/applied-nlp/tree/main/labs/capstone">labs/capstone/</a>.</p>
+    </div>
+    <div>
+      <h2>Rubric</h2>
+      <div class="bar"><span>Functional end-to-end solution<i style="--w:100%"></i></span><b>30%</b></div>
+      <div class="bar"><span>Model selection &amp; implementation<i style="--w:83%;--c:var(--cyan)"></i></span><b>25%</b></div>
+      <div class="bar"><span>Evaluation &amp; error analysis<i style="--w:67%;--c:var(--coral)"></i></span><b>20%</b></div>
+      <div class="bar"><span>Fine-tuning or justified adaptation<i style="--w:50%;--c:var(--purple)"></i></span><b>15%</b></div>
+      <div class="bar"><span>Presentation &amp; reproducibility<i style="--w:33%;--c:var(--amber)"></i></span><b>10%</b></div>
+    </div>
+  </div>
+
+  <div class="two">
+    <div>
+      <h2>Participants will be able to</h2>
+      <ul>
+        <li>Explain and implement tokenization, embeddings and transformer inference</li>
+        <li>Build semantic search and text classification systems</li>
+        <li>Develop structured-output and retrieval-grounded LLM applications</li>
+        <li>Choose between discriminative decision models and generative LLMs</li>
+        <li>Fine-tune transformers with supervised and parameter-efficient methods</li>
+        <li>Evaluate, compare and demonstrate practical NLP solutions</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Setup</h2>
+      <p><b>Audience:</b> Python-proficient developers and data scientists with basic ML. No prior transformer experience needed.</p>
+      <p><b>Environment:</b> Google Colab (GPU) or local with <code>uv</code>. Run <a href="https://colab.research.google.com/github/SDAIAAcademy/applied-nlp/blob/main/labs/00_setup_check.ipynb">00_setup_check</a> before Day 1; see <a href="https://github.com/SDAIAAcademy/applied-nlp/tree/main/labs#readme">labs/README.md</a>.</p>
+      <p><b>Stack:</b> Hugging Face Transformers, Tokenizers, Datasets, PEFT · Sentence Transformers · FAISS · scikit-learn · PyTorch · Pydantic · Gradio · an OpenAI-compatible LLM endpoint (optional).</p>
+    </div>
+  </div>
+</main>
+<footer><div class="wrap">SDAIA Academy · AI Engineering Track · Applied NLP Engineering</div></footer>
+<script src="assets/logo.js"></script>
+<script>document.getElementById('logo').innerHTML = window.ACADEMY_LOGO || 'SDAIA Academy';</script>
+</body>
+</html>
