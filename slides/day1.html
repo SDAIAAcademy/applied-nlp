@@ -281,8 +281,8 @@ uv run jupyter lab</code></pre>
       <table class="t small mt-s">
         <tr><th>Tokenizer</th><th class="num">EN fertility</th><th class="num">AR fertility</th></tr>
         <tr><td>gpt2</td><td class="num">?</td><td class="num">?</td></tr>
-        <tr><td>bert-base-multilingual-cased</td><td class="num">?</td><td class="num">?</td></tr>
-        <tr><td>xlm-roberta-base</td><td class="num">?</td><td class="num">?</td></tr>
+        <tr><td>google-bert/bert-base-multilingual-cased</td><td class="num">?</td><td class="num">?</td></tr>
+        <tr><td>FacebookAI/xlm-roberta-base</td><td class="num">?</td><td class="num">?</td></tr>
         <tr><td>aubmindlab/bert-base-arabertv02</td><td class="num">?</td><td class="num">?</td></tr>
         <tr><td>Qwen/Qwen2.5-0.5B-Instruct</td><td class="num">?</td><td class="num">?</td></tr>
       </table>
@@ -296,7 +296,7 @@ uv run jupyter lab</code></pre>
   <div class="cols cols-2">
     <pre class="code s"><code class="language-python">from transformers import AutoTokenizer
 
-tok = AutoTokenizer.from_pretrained("xlm-roberta-base")
+tok = AutoTokenizer.from_pretrained("FacebookAI/xlm-roberta-base")
 batch = tok(
     ["Where is my order?", "أين طلبي؟ لم يصل بعد"],
     padding=True,          # pad to longest in batch
@@ -571,7 +571,7 @@ search("لم يصلني المبلغ المسترد")   # Arabic query, English 
     <ul class="checklist">
       <li>Embed sentences; compute a similarity matrix and a heatmap <span class="min">5'</span></li>
       <li>Compare mean pooling by hand with the library output <span class="min">5'</span></li>
-      <li>Index the training tickets with NumPy, then FAISS <span class="min">5'</span></li>
+      <li>Index historical tickets with NumPy, then FAISS <span class="min">5'</span></li>
       <li>Evaluate Hit@5 and MRR on test tickets (same-intent relevance) <span class="min">5'</span></li>
       <li>Cross-lingual: Arabic queries → English history <span class="min">5'</span></li>
       <li class="stretch">✱ Compare two embedding models, or plot a 2-D UMAP of intents</li>
@@ -729,8 +729,8 @@ search("لم يصلني المبلغ المسترد")   # Arabic query, English 
   <h2>Masked LM vs. next-token prediction</h2>
   <div class="cols cols-2">
     <div class="card c-teal"><h4>Encoder: fill the blank</h4>
-      <div class="tokens mt-s"><span>My</span><span>&lt;mask&gt;</span><span>has</span><span>not</span><span>arrived</span><span>yet</span></div>
-      <table class="t small mt-s"><tr><th>Prediction</th><th class="num">p</th></tr><tr><td>order</td><td class="num">0.41</td></tr><tr><td>package</td><td class="num">0.22</td></tr><tr><td>refund</td><td class="num">0.08</td></tr></table>
+      <div class="tokens mt-s"><span>My</span><span>&lt;mask&gt;</span><span>has</span><span>not</span><span>arrived</span><span>yet,</span><span>I</span><span>ordered</span><span>it</span><span>last</span><span>week</span></div>
+      <table class="t small mt-s"><tr><th>Prediction</th><th class="num">p</th></tr><tr><td>order</td><td class="num">0.40</td></tr><tr><td>package</td><td class="num">0.22</td></tr><tr><td>refund</td><td class="num">0.08</td></tr></table>
       <p class="xsmall muted mt-s">Illustrative probabilities</p>
     </div>
     <div class="card c-coral"><h4>Decoder: continue the text</h4>
@@ -748,7 +748,7 @@ search("لم يصلني المبلغ المسترد")   # Arabic query, English 
     <pre class="code s"><code class="language-python">from transformers import AutoTokenizer, AutoModel
 import torch
 
-name = "bert-base-multilingual-cased"
+name = "google-bert/bert-base-multilingual-cased"
 tok = AutoTokenizer.from_pretrained(name)
 model = AutoModel.from_pretrained(name, output_attentions=True)
 
@@ -882,18 +882,20 @@ out.attentions[0].shape      # (1, heads=12, n, n)</code></pre>
         <li>Cost scales with the number of labels (one pass per label).</li>
       </ul>
     </div>
-    <pre class="code s"><code class="language-python">from transformers import pipeline
+    <pre class="code s"><code class="language-python">import torch
+from transformers import pipeline
 
 clf = pipeline(
     "zero-shot-classification",
     model="MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7",
+    dtype=torch.float32,   # checkpoint is fp16: slow on CPU
 )
 labels = ["refund", "delivery", "payment problem",
           "account access", "order changes", "invoice"]
 clf("لقد تم خصم المبلغ مرتين من بطاقتي",
     candidate_labels=labels,
     hypothesis_template="This customer message is about {}.")
-# {'labels': ['payment problem', ...], 'scores': [0.87, ...]}</code></pre>
+# {'labels': [...], 'scores': [...]}  label wording changes the ranking</code></pre>
   </div>
 </section>
 

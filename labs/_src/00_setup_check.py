@@ -84,7 +84,7 @@ from huggingface_hub import snapshot_download
 
 models = [
     U.MODELS["embed"], U.MODELS["nli"], U.MODELS["encoder"], U.MODELS["reranker"], U.MODELS["lora_base"],
-    "gpt2", "bert-base-multilingual-cased", "xlm-roberta-base", "aubmindlab/bert-base-arabertv02",
+    "gpt2", "google-bert/bert-base-multilingual-cased", "FacebookAI/xlm-roberta-base", "aubmindlab/bert-base-arabertv02",
     "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
 ]
 if torch.cuda.is_available():

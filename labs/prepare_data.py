@@ -182,7 +182,7 @@ def main() -> None:
     rest = rest[~rest.ticket_id.isin(val.ticket_id)]
     train = stratified_take(rest, N_TRAIN, SEED)
     rest = rest[~rest.ticket_id.isin(train.ticket_id)]
-    history = rest.sample(n=min(N_HISTORY, len(rest)), random_state=SEED).sort_values("ticket_id")
+    history = rest.sample(n=min(N_HISTORY, len(rest)), random_state=SEED)  # shuffled: head(n) is a fair sample
 
     cols = ["ticket_id", "text", "intent", "category", "priority", "lang"]
     train[cols].sample(frac=1, random_state=SEED).to_csv(DATA / "tickets_train.csv", index=False)
