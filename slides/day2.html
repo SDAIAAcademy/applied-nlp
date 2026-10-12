@@ -183,7 +183,7 @@ Where is my refund?&lt;|im_end|&gt;
     <tr><td>Brainstorm FAQ variations / synthetic data</td><td>T ≈ 0.9–1.2, top-p 0.95</td><td>Diversity matters</td></tr>
     <tr><td>Any task</td><td><code>max_new_tokens</code>, stop sequences</td><td>Caps cost and latency, prevents run-on</td></tr>
   </table>
-  <div class="callout note mt small"><b>Even at T = 0</b>, API outputs may vary slightly across calls (batching, hardware). Design evaluation to tolerate it: run twice, compare.</div>
+  <div class="callout note mt small"><b>Even at T = 0</b>, API outputs may vary slightly across calls (batching, hardware). Design evaluation to tolerate it. Also check the model's <code>generation_config</code>: Qwen ships a repetition penalty that applies even with greedy decoding.</div>
 </section>
 
 <section class="slide">
@@ -323,7 +323,7 @@ MESSAGE
   </div>
   <div class="cols cols-2 mt">
     <div class="callout warn small"><b>Watch for:</b> label imbalance in examples (the model copies it), order effects (last example bias), and prompt length = cost on every call.</div>
-    <div class="callout tip small"><b>Measure it:</b> zero-shot vs. 4-shot vs. dynamic 4-shot on the same 100 test tickets. You'll do exactly this in the lab.</div>
+    <div class="callout tip small"><b>Measure it:</b> zero-shot vs. 4-shot vs. dynamic 4-shot on the same test tickets. You'll do exactly this in the lab.</div>
   </div>
 </section>
 
@@ -392,7 +392,7 @@ schema = TicketAnalysis.model_json_schema()   # → goes in the prompt / API</co
 <section class="slide">
   <div class="kicker">Level 2 in practice</div>
   <h2>Validate, feed back the error, retry</h2>
-  <pre class="code"><code class="language-python">import json, re
+  <pre class="code s"><code class="language-python">import json, re
 from pydantic import ValidationError
 
 def extract_json(text: str) -> str:
@@ -405,7 +405,7 @@ def analyze(ticket: str, max_retries: int = 2) -> TicketAnalysis | None:
         raw = llm_chat(messages, temperature=0, max_new_tokens=256)
         try:
             return TicketAnalysis.model_validate_json(extract_json(raw))
-        except (ValidationError, json.JSONDecodeError) as e:
+        except ValidationError as e:                     # also raised for malformed JSON
             messages += [{"role": "assistant", "content": raw},
                          {"role": "user", "content": f"Invalid output: {e}. Return corrected JSON only."}]
     return None                                        # → route to human, log it</code></pre>
@@ -458,7 +458,7 @@ def analyze(ticket: str, max_retries: int = 2) -> TicketAnalysis | None:
       <li>Static 4-shot vs. dynamic 4-shot (retrieved examples) <span class="min">7'</span></li>
       <li>Regex for order IDs + LLM for the rest; merge <span class="min">4'</span></li>
       <li>Run 5 injection attacks; harden the prompt <span class="min">4'</span></li>
-      <li class="stretch">✱ Constrained decoding with a logits processor / Outlines</li>
+      <li class="stretch">✱ Constrained decoding with a custom LogitsProcessor</li>
     </ul>
   </div>
 </section>
@@ -551,7 +551,7 @@ def analyze(ticket: str, max_retries: int = 2) -> TicketAnalysis | None:
   <div class="cols cols-2">
     <div>
       <p class="small"><b>Reciprocal Rank Fusion</b> merges ranked lists without calibrating scores:</p>
-      <p style="font-family:var(--mono);font-size:30px;color:var(--navy)">RRF(d) = Σ 1 / (k + rank_i(d)),  k≈60</p>
+      <p style="font-family:var(--mono);font-size:26px;color:var(--navy);margin-bottom:10px">RRF(d) = Σ 1 / (k + rank_i(d)),  k≈60</p>
       <pre class="code s"><code class="language-python">def rrf(*rankings, k=60):
     scores = {}
     for ranking in rankings:              # lists of doc ids
@@ -561,11 +561,11 @@ def analyze(ticket: str, max_retries: int = 2) -> TicketAnalysis | None:
 
 fused = rrf(bm25_top20, dense_top20)</code></pre>
     </div>
-    <div class="stack small">
-      <div class="card c-teal flat"><b>BM25</b> catches exact terms: "INV-2024", "Apple Pay".</div>
-      <div class="card c-navy flat"><b>Dense</b> catches paraphrase and cross-lingual: <span class="ar">"وين فلوسي"</span> → refund policy.</div>
-      <div class="card c-coral flat"><b>Cross-encoder reranker</b> reads (query, chunk) together and rescores the top-20. Slower, much sharper. Example: <code>BAAI/bge-reranker-v2-m3</code>.</div>
-      <div class="card c-purple flat"><b>Query rewriting</b>: translate or expand the ticket before searching an English-only KB.</div>
+    <div class="stack dense">
+      <div class="card c-teal flat"><b>BM25</b> catches exact terms: "INV-2024", "Apple Pay". Noise for Arabic queries on an English KB: measure first.</div>
+      <div class="card c-navy flat"><b>Dense</b> catches paraphrase, cross-lingual: <span class="ar">"وين فلوسي"</span> → refunds.</div>
+      <div class="card c-coral flat"><b>Cross-encoder reranker</b> reads (query, chunk) together and rescores the top-20. Slower, much sharper. Lab: multilingual <code>mmarco-mMiniLMv2</code>; stronger: <code>bge-reranker-v2-m3</code>.</div>
+      <div class="card c-purple flat"><b>Query rewriting</b>: translate or expand the ticket first.</div>
     </div>
   </div>
 </section>

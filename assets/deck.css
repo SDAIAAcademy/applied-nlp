@@ -377,3 +377,7 @@ body.overview .slide.active { outline-color: var(--amber); }
 .timer-edit input.mins { width: 70px; margin-right: 6px; text-align: center; }
 .timer-edit .or { opacity: .6; }
 .timer-edit .back { min-width: 150px; color: var(--amber); font-weight: 600; }
+
+/* denser card stacks for crowded slides */
+.stack.dense > * + * { margin-top: 12px; }
+.stack.dense .card { font-size: 21px; padding: 16px 22px; }

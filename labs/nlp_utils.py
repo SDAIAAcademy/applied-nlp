@@ -218,7 +218,8 @@ class LLM:
             if temperature and temperature > 0:
                 gen.update(do_sample=True, temperature=temperature, top_p=top_p)
             else:
-                gen.update(do_sample=False, temperature=None, top_p=None, top_k=None)
+                # plain greedy: also neutralise sampling/penalty defaults from the model's generation_config
+                gen.update(do_sample=False, temperature=None, top_p=None, top_k=None, repetition_penalty=1.0)
             gen.update(kwargs)
             with torch.no_grad():
                 out = self.hf_model.generate(**enc, **gen)
