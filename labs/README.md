@@ -18,6 +18,8 @@ uv run jupyter lab
 ```
 Run `00_setup_check.ipynb` once before Day 1: it downloads every model so class time isn't spent waiting.
 
+On a flaky or offline classroom network, set `HF_HUB_OFFLINE=1` after running the setup check: models then load from the local cache without waiting on the Hub.
+
 Set `APPLIED_NLP_QUICK=1` to shrink every workload (smaller samples, a few training steps). Useful on slow laptops and for checking that notebooks run.
 
 ## Notebooks
