@@ -1,0 +1,33 @@
+question,lang,gold_section
+How long does a refund to my Visa card take?,en,refunds#refund-timelines
+My refund says Refunded but I don't see the money,en,refunds#tracking-a-refund
+Can I return a gift card?,en,refunds#refund-eligibility
+How do I send an item back for a refund?,en,refunds#how-to-request-a-refund
+Will I get the delivery fee back if I return one item?,en,refunds#partial-refunds
+Can I cancel my order after it has shipped?,en,cancellations#cancelling-an-order
+Is there a fee if I refuse the delivery?,en,cancellations#cancellation-fees
+Can I add another item to an order I placed 20 minutes ago?,en,orders#changing-an-order
+My order is 5 days late. What should I do?,en,orders#tracking-an-order
+Do you have same-day delivery in Jeddah?,en,shipping#delivery-options
+Does delivery take longer during Ramadan?,en,shipping#delivery-periods
+I need to change the delivery address of my order,en,shipping#changing-the-shipping-address
+Do you ship to Kuwait?,en,shipping#international-shipping
+Can I pay cash on delivery for a 1500 SAR order?,en,payments#accepted-payment-methods
+I was charged twice for the same order,en,payments#charged-twice
+My payment failed but the money was deducted,en,payments#payment-failed
+Someone called asking for my OTP. Is that you?,en,payments#payment-security
+The VAT number on my invoice is wrong,en,invoices#checking-or-correcting-an-invoice
+I don't receive the verification code when signing up,en,account#registration-problems
+My account is locked after too many login attempts,en,account#recovering-your-password
+How do I delete my account and my data?,en,account#deleting-your-account
+How do I talk to a real person?,en,contact#talking-to-a-human-agent
+How long do you take to resolve a complaint?,en,feedback#how-complaints-are-handled
+كم يستغرق استرداد المبلغ إلى بطاقة مدى؟,ar,refunds#refund-timelines
+هل يمكنني إلغاء الطلب بعد شحنه؟,ar,cancellations#cancelling-an-order
+تم خصم المبلغ مرتين من بطاقتي,ar,payments#charged-twice
+هل عندكم توصيل بنفس اليوم في الرياض؟,ar,shipping#delivery-options
+كيف أحذف حسابي نهائياً؟,ar,account#deleting-your-account
+ابي اكلم موظف,ar,contact#talking-to-a-human-agent
+لا يصلني رمز التحقق,ar,account#registration-problems
+Do you sell gaming laptops with RTX 5090?,en,
+What is your company's stock price?,en,

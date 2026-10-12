@@ -1,0 +1,15 @@
+# Colab already ships torch, transformers, numpy, pandas, scikit-learn and matplotlib.
+transformers>=4.56
+datasets>=3.0
+accelerate>=1.0
+peft>=0.13
+sentence-transformers>=3.2
+faiss-cpu>=1.8
+rank-bm25>=0.2.2
+pydantic>=2.7
+openai>=1.50
+python-dotenv>=1.0
+sentencepiece>=0.2
+gradio>=4.44
+umap-learn>=0.5
+bitsandbytes>=0.44
