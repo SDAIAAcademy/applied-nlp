@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Day 1 · Applied NLP</title>
-<link rel="icon" href="https://sdaiaacademy.github.io/slides/img/academy.svg">
+<link rel="icon" href="https://sdaiaacademy.github.io/slides/icon.svg">
 <link rel="stylesheet" href="https://sdaiaacademy.github.io/slides/deck.css">
 </head>
 <body>
@@ -98,13 +98,10 @@
   <div class="kicker">Today</div>
   <h2>Day 1 agenda</h2>
   <div class="agenda">
-    <div class="item"><span><b>Session 1 · Tokenization</b><small>Welcome, setup, from text to token IDs, Arabic specifics</small></span><span class="d">50 min</span></div>
-    <div class="item brk"><span>Break</span><span class="d">10 min</span></div>
-    <div class="item"><span><b>Session 2 · Embeddings &amp; semantic search</b><small>Dense vectors, cosine similarity, pooling, retrieval metrics</small></span><span class="d">50 min</span></div>
-    <div class="item brk"><span>Long break</span><span class="d">20 min</span></div>
-    <div class="item"><span><b>Session 3 · Inside the transformer</b><small>Self-attention, positions, encoder vs. decoder, Hugging Face</small></span><span class="d">50 min</span></div>
-    <div class="item brk"><span>Break</span><span class="d">10 min</span></div>
-    <div class="item"><span><b>Session 4 · Decision models</b><small>Zero-shot, embedding classifiers, metrics, thresholds</small></span><span class="d">50 min</span></div>
+    <div class="item"><span><b>Session 1 · Tokenization</b><small>Welcome, setup, from text to token IDs, Arabic specifics</small></span></div>
+    <div class="item"><span><b>Session 2 · Embeddings &amp; semantic search</b><small>Dense vectors, cosine similarity, pooling, retrieval metrics</small></span></div>
+    <div class="item"><span><b>Session 3 · Inside the transformer</b><small>Self-attention, positions, encoder vs. decoder, Hugging Face</small></span></div>
+    <div class="item"><span><b>Session 4 · Decision models</b><small>Zero-shot, embedding classifiers, metrics, thresholds</small></span></div>
   </div>
 </section>
 
@@ -355,19 +352,13 @@ tok.model_max_length           # 512</code></pre>
   <div class="kicker">Checkpoint</div>
   <h2>A ticket is 60 words in English and 60 words in Arabic. Using GPT-2's tokenizer, which is most likely?</h2>
   <div class="opts">
-    <div class="opt" data-k="A">Both produce about the same number of tokens</div>
-    <div class="opt" data-k="B" data-ok>The Arabic version produces many more tokens</div>
-    <div class="opt" data-k="C">Arabic triggers <code>[UNK]</code> tokens and loses information</div>
+    <div class="opt" data-k="A">Arabic triggers <code>[UNK]</code> tokens and loses information</div>
+    <div class="opt" data-k="B">Both produce about the same number of tokens</div>
+    <div class="opt" data-k="C" data-ok>The Arabic version produces many more tokens</div>
   </div>
-  <div class="why callout tip small"><b>B.</b> GPT-2 uses byte-level BPE trained mostly on English: no <code>[UNK]</code>s, but few Arabic merges, so Arabic text splits into many short byte pieces.</div>
+  <div class="why callout tip small"><b>C.</b> GPT-2 uses byte-level BPE trained mostly on English: no <code>[UNK]</code>s, but few Arabic merges, so Arabic text splits into many short byte pieces.</div>
 </section>
 
-<section class="slide break" data-label="Break">
-  <div class="kicker">Break</div>
-  <h1>10-minute break</h1>
-  <div class="timer" data-minutes="10"></div>
-  <p class="lead">Next: Session 2 · Embeddings &amp; semantic search</p>
-</section>
 
 <!-- ======================= SESSION 2: EMBEDDINGS ======================= -->
 <section class="slide section" data-session="Session 2 · Embeddings">
@@ -579,19 +570,13 @@ search("لم يصلني المبلغ المسترد")   # Arabic query, English 
   <div class="kicker">Checkpoint</div>
   <h2>Users search for "invoice INV-2024-00731". Semantic search returns other invoices but not that one. Best fix?</h2>
   <div class="opts">
-    <div class="opt" data-k="A">Switch to a bigger embedding model</div>
-    <div class="opt" data-k="B" data-ok>Add keyword (BM25) search and merge the results: hybrid search</div>
-    <div class="opt" data-k="C">Lower the similarity threshold</div>
+    <div class="opt" data-k="A" data-ok>Add keyword (BM25) search and merge the results: hybrid search</div>
+    <div class="opt" data-k="B">Lower the similarity threshold</div>
+    <div class="opt" data-k="C">Switch to a bigger embedding model</div>
   </div>
-  <div class="why callout tip small"><b>B.</b> Exact identifiers are a lexical problem. Embeddings capture "about invoices", and keyword search catches the exact ID.</div>
+  <div class="why callout tip small"><b>A.</b> Exact identifiers are a lexical problem. Embeddings capture "about invoices", and keyword search catches the exact ID.</div>
 </section>
 
-<section class="slide break" data-label="Break">
-  <div class="kicker">Long break</div>
-  <h1>20-minute break</h1>
-  <div class="timer" data-minutes="20"></div>
-  <p class="lead">Next: Session 3 · Inside the transformer</p>
-</section>
 
 <!-- ======================= SESSION 3: TRANSFORMERS ======================= -->
 <section class="slide section" data-session="Session 3 · Transformers">
@@ -803,19 +788,13 @@ out.attentions[0].shape      # (1, heads=12, n, n)</code></pre>
   <div class="kicker">Checkpoint</div>
   <h2>You need to route 2 million tickets per day into 27 intents with low latency. Which family do you start with?</h2>
   <div class="opts">
-    <div class="opt" data-k="A" data-ok>An encoder (e.g., XLM-R or a multilingual MiniLM) with a classification head</div>
-    <div class="opt" data-k="B">A 70B decoder LLM with a prompt listing all intents</div>
-    <div class="opt" data-k="C">An encoder–decoder translation model</div>
+    <div class="opt" data-k="A">An encoder–decoder translation model</div>
+    <div class="opt" data-k="B" data-ok>An encoder (e.g., XLM-R or a multilingual MiniLM) with a classification head</div>
+    <div class="opt" data-k="C">A 70B decoder LLM with a prompt listing all intents</div>
   </div>
-  <div class="why callout tip small"><b>A.</b> The output is a label, the volume is high and latency matters. Small encoders are cheap, fast and accurate after fine-tuning. Keep the LLM for cases where you need generated text.</div>
+  <div class="why callout tip small"><b>B.</b> The output is a label, the volume is high and latency matters. Small encoders are cheap, fast and accurate after fine-tuning. Keep the LLM for cases where you need generated text.</div>
 </section>
 
-<section class="slide break" data-label="Break">
-  <div class="kicker">Break</div>
-  <h1>10-minute break</h1>
-  <div class="timer" data-minutes="10"></div>
-  <p class="lead">Next: Session 4 · Decision models</p>
-</section>
 
 <!-- ======================= SESSION 4: DECISION MODELS ======================= -->
 <section class="slide section" data-session="Session 4 · Decision models">

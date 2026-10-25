@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Day 2 · Applied NLP</title>
-<link rel="icon" href="https://sdaiaacademy.github.io/slides/img/academy.svg">
+<link rel="icon" href="https://sdaiaacademy.github.io/slides/icon.svg">
 <link rel="stylesheet" href="https://sdaiaacademy.github.io/slides/deck.css">
 </head>
 <body>
@@ -41,13 +41,10 @@
   <div class="kicker">Today</div>
   <h2>Day 2 agenda</h2>
   <div class="agenda">
-    <div class="item"><span><b>Session 1 · Generative LLMs</b><small>Next-token prediction, chat templates, decoding and sampling</small></span><span class="d">50 min</span></div>
-    <div class="item brk"><span>Break</span><span class="d">10 min</span></div>
-    <div class="item"><span><b>Session 2 · Prompting &amp; structured outputs</b><small>Prompt anatomy, few-shot, JSON schemas, validation, injection</small></span><span class="d">50 min</span></div>
-    <div class="item brk"><span>Long break</span><span class="d">20 min</span></div>
-    <div class="item"><span><b>Session 3 · Retrieval-augmented generation</b><small>Chunking, hybrid retrieval, reranking, grounding, citations</small></span><span class="d">50 min</span></div>
-    <div class="item brk"><span>Break</span><span class="d">10 min</span></div>
-    <div class="item"><span><b>Session 4 · Model selection &amp; evaluation</b><small>Encoder vs. LLM, latency, cost, hallucination, the full pipeline</small></span><span class="d">50 min</span></div>
+    <div class="item"><span><b>Session 1 · Generative LLMs</b><small>Next-token prediction, chat templates, decoding and sampling</small></span></div>
+    <div class="item"><span><b>Session 2 · Prompting &amp; structured outputs</b><small>Prompt anatomy, few-shot, JSON schemas, validation, injection</small></span></div>
+    <div class="item"><span><b>Session 3 · Retrieval-augmented generation</b><small>Chunking, hybrid retrieval, reranking, grounding, citations</small></span></div>
+    <div class="item"><span><b>Session 4 · Model selection &amp; evaluation</b><small>Encoder vs. LLM, latency, cost, hallucination, the full pipeline</small></span></div>
   </div>
 </section>
 
@@ -251,19 +248,13 @@ print(resp.usage)   # prompt / completion tokens → cost</code></pre>
   <div class="kicker">Checkpoint</div>
   <h2>Your LLM-based intent classifier returns different labels for the same ticket on each run. First fix?</h2>
   <div class="opts">
-    <div class="opt" data-k="A">Use a bigger model</div>
-    <div class="opt" data-k="B" data-ok>Switch to greedy decoding (do_sample=False / temperature 0) and constrain the output to the label set</div>
-    <div class="opt" data-k="C">Increase max_new_tokens</div>
+    <div class="opt" data-k="A">Increase max_new_tokens</div>
+    <div class="opt" data-k="B">Use a bigger model</div>
+    <div class="opt" data-k="C" data-ok>Switch to greedy decoding (do_sample=False / temperature 0) and constrain the output to the label set</div>
   </div>
-  <div class="why callout tip small"><b>B.</b> Sampling adds randomness by design. For decisions, decode greedily and restrict outputs to valid labels (next session).</div>
+  <div class="why callout tip small"><b>C.</b> Sampling adds randomness by design. For decisions, decode greedily and restrict outputs to valid labels (next session).</div>
 </section>
 
-<section class="slide break" data-label="Break">
-  <div class="kicker">Break</div>
-  <h1>10-minute break</h1>
-  <div class="timer" data-minutes="10"></div>
-  <p class="lead">Next: Session 2 · Prompting &amp; structured outputs</p>
-</section>
 
 <!-- ======================= SESSION 2: PROMPTING & STRUCTURED OUTPUTS ======================= -->
 <section class="slide section" data-session="Session 2 · Structured outputs">
@@ -463,19 +454,13 @@ def analyze(ticket: str, max_retries: int = 2) -> TicketAnalysis | None:
   <div class="kicker">Checkpoint</div>
   <h2>Constrained decoding gives you 100% schema-valid JSON. What do you still need to measure?</h2>
   <div class="opts">
-    <div class="opt" data-k="A">Nothing. Valid output means correct output.</div>
-    <div class="opt" data-k="B">Only latency</div>
-    <div class="opt" data-k="C" data-ok>Field-level accuracy (is the intent right? is the order ID real?) against labelled data</div>
+    <div class="opt" data-k="A" data-ok>Field-level accuracy (is the intent right? is the order ID real?) against labelled data</div>
+    <div class="opt" data-k="B">Nothing. Valid output means correct output.</div>
+    <div class="opt" data-k="C">Only latency</div>
   </div>
-  <div class="why callout tip small"><b>C.</b> A perfectly formatted wrong answer is still wrong, and harder to notice.</div>
+  <div class="why callout tip small"><b>A.</b> A perfectly formatted wrong answer is still wrong, and harder to notice.</div>
 </section>
 
-<section class="slide break" data-label="Break">
-  <div class="kicker">Long break</div>
-  <h1>20-minute break</h1>
-  <div class="timer" data-minutes="20"></div>
-  <p class="lead">Next: Session 3 · Retrieval-augmented generation</p>
-</section>
 
 <!-- ======================= SESSION 3: RAG ======================= -->
 <section class="slide section" data-session="Session 3 · RAG">
@@ -650,12 +635,6 @@ TICKET
   <div class="why callout tip small"><b>B.</b> Retrieval did its job. The generator ignored or misread the evidence. Tighten grounding instructions, reduce noise in context, or use a stronger model.</div>
 </section>
 
-<section class="slide break" data-label="Break">
-  <div class="kicker">Break</div>
-  <h1>10-minute break</h1>
-  <div class="timer" data-minutes="10"></div>
-  <p class="lead">Next: Session 4 · Model selection &amp; evaluation</p>
-</section>
 
 <!-- ======================= SESSION 4: MODEL SELECTION ======================= -->
 <section class="slide section" data-session="Session 4 · Model selection">

@@ -2,7 +2,7 @@
 
 **SDAIA Academy · AI Engineering Track**: a 3-day hands-on bootcamp (4 sessions per day) plus a capstone presentation day. From tokens to fine-tuned language models: build, evaluate and adapt practical NLP systems for English and Arabic text.
 
-**Course page and slides:** https://sdaiaacademy.github.io/applied-nlp/
+**Course page:** https://sdaiaacademy.github.io/applied-nlp/
 
 | Day | Theme | Slides |
 |---|---|---|
@@ -11,9 +11,7 @@
 | 3 | Fine-Tuning & NLP Engineering | [day3](https://sdaiaacademy.github.io/applied-nlp/slides/day3.html) |
 | 4 | Capstone Project Presentations | [day4](https://sdaiaacademy.github.io/applied-nlp/slides/day4.html) |
 
-Each day runs Session 1 → short break → Session 2 → mid-day break → Session 3 → short break → Session 4. Break slides default to 10 minutes (20 for the mid-day break); the instructor can change the length or type a "back at" time on the slide.
-
-**Slide keys:** `F` fullscreen · `Esc` exit · `←` `→` / `↑` `↓` navigate · `N` speaker notes · `O` overview · `T` start/pause timer · `?` help.
+Each day has four sessions with a short break between them and a longer one at mid-day. Every session is about 20–25 minutes of concepts and demos followed by a 25-minute lab.
 
 ## Repository
 
@@ -24,7 +22,3 @@ labs/               notebooks, data preparation, shared helpers, capstone kit (s
 ```
 
 Labs run on Google Colab (one click from the course page) or locally with [uv](https://docs.astral.sh/uv/): see [labs/README.md](labs/README.md).
-
-The slide engine and the course-page style are shared by all Academy courses and served from
-[SDAIAAcademy/slides](https://github.com/SDAIAAcademy/slides); the decks declare `data-track="ai-engineering"`.
-Add `?check` to a deck's URL to run its layout self-check.

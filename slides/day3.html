@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Day 3 · Applied NLP</title>
-<link rel="icon" href="https://sdaiaacademy.github.io/slides/img/academy.svg">
+<link rel="icon" href="https://sdaiaacademy.github.io/slides/icon.svg">
 <link rel="stylesheet" href="https://sdaiaacademy.github.io/slides/deck.css">
 </head>
 <body>
@@ -41,13 +41,10 @@
   <div class="kicker">Today</div>
   <h2>Day 3 agenda</h2>
   <div class="agenda">
-    <div class="item"><span><b>Session 1 · Fine-tuning fundamentals &amp; data</b><small>Transfer learning, when to fine-tune, splits, leakage, datasets</small></span><span class="d">50 min</span></div>
-    <div class="item brk"><span>Break</span><span class="d">10 min</span></div>
-    <div class="item"><span><b>Session 2 · Fine-tune a decision model</b><small>Classification heads, cross-entropy, Trainer, overfitting</small></span><span class="d">50 min</span></div>
-    <div class="item brk"><span>Long break</span><span class="d">20 min</span></div>
-    <div class="item"><span><b>Session 3 · LLM adaptation with LoRA</b><small>SFT, LoRA/QLoRA, loss masking, fine-tuning vs. RAG</small></span><span class="d">50 min</span></div>
-    <div class="item brk"><span>Break</span><span class="d">10 min</span></div>
-    <div class="item"><span><b>Session 4 · Evaluate, deploy &amp; capstone kickoff</b><small>Leaderboard, error analysis, packaging, demo app, capstone brief</small></span><span class="d">50 min</span></div>
+    <div class="item"><span><b>Session 1 · Fine-tuning fundamentals &amp; data</b><small>Transfer learning, when to fine-tune, splits, leakage, datasets</small></span></div>
+    <div class="item"><span><b>Session 2 · Fine-tune a decision model</b><small>Classification heads, cross-entropy, Trainer, overfitting</small></span></div>
+    <div class="item"><span><b>Session 3 · LLM adaptation with LoRA</b><small>SFT, LoRA/QLoRA, loss masking, fine-tuning vs. RAG</small></span></div>
+    <div class="item"><span><b>Session 4 · Evaluate, deploy &amp; capstone kickoff</b><small>Leaderboard, error analysis, packaging, demo app, capstone brief</small></span></div>
   </div>
 </section>
 
@@ -214,19 +211,13 @@ collator = DataCollatorWithPadding(tok)   # pads per batch, not globally</code><
   <div class="kicker">Checkpoint</div>
   <h2>You tried 6 learning rates and picked the one with the best <i>test</i> F1. What's wrong?</h2>
   <div class="opts">
-    <div class="opt" data-k="A">Nothing, that's what the test set is for</div>
-    <div class="opt" data-k="B" data-ok>The test set was used for model selection, so its score is now optimistically biased. Choose on validation.</div>
-    <div class="opt" data-k="C">You should have tried more learning rates</div>
+    <div class="opt" data-k="A">You should have tried more learning rates</div>
+    <div class="opt" data-k="B">Nothing, that's what the test set is for</div>
+    <div class="opt" data-k="C" data-ok>The test set was used for model selection, so its score is now optimistically biased. Choose on validation.</div>
   </div>
-  <div class="why callout tip small"><b>B.</b> Every decision made by looking at a split "uses it up". Keep the test set for the final, single evaluation.</div>
+  <div class="why callout tip small"><b>C.</b> Every decision made by looking at a split "uses it up". Keep the test set for the final, single evaluation.</div>
 </section>
 
-<section class="slide break" data-label="Break">
-  <div class="kicker">Break</div>
-  <h1>10-minute break</h1>
-  <div class="timer" data-minutes="10"></div>
-  <p class="lead">Next: Session 2 · Fine-tune a decision model</p>
-</section>
 
 <!-- ======================= SESSION 2: FINE-TUNE ENCODER ======================= -->
 <section class="slide section" data-session="Session 2 · Fine-tune an encoder">
@@ -375,19 +366,13 @@ trainer.evaluate(ds["test"])        # once, at the very end</code></pre>
   <div class="kicker">Checkpoint</div>
   <h2>Train loss keeps falling; validation macro-F1 peaked at epoch 2 and is dropping at epoch 5. What do you ship?</h2>
   <div class="opts">
-    <div class="opt" data-k="A">The epoch-5 model: lowest training loss</div>
-    <div class="opt" data-k="B" data-ok>The epoch-2 checkpoint (best on validation), then evaluate it once on test</div>
-    <div class="opt" data-k="C">Train for 10 more epochs</div>
+    <div class="opt" data-k="A" data-ok>The epoch-2 checkpoint (best on validation), then evaluate it once on test</div>
+    <div class="opt" data-k="B">Train for 10 more epochs</div>
+    <div class="opt" data-k="C">The epoch-5 model: lowest training loss</div>
   </div>
-  <div class="why callout tip small"><b>B.</b> That's exactly what <code>load_best_model_at_end</code> + early stopping automate.</div>
+  <div class="why callout tip small"><b>A.</b> That's exactly what <code>load_best_model_at_end</code> + early stopping automate.</div>
 </section>
 
-<section class="slide break" data-label="Break">
-  <div class="kicker">Long break</div>
-  <h1>20-minute break</h1>
-  <div class="timer" data-minutes="20"></div>
-  <p class="lead">Next: Session 3 · LLM adaptation with LoRA</p>
-</section>
 
 <!-- ======================= SESSION 3: LORA ======================= -->
 <section class="slide section" data-session="Session 3 · LLM adaptation">
@@ -559,12 +544,6 @@ labels     = [-100] * len(prompt_ids) + full_ids[len(prompt_ids):]</code></pre>
   <div class="why callout tip small"><b>B.</b> Weights are a poor database: hard to update, impossible to cite. Keep changing knowledge in the index.</div>
 </section>
 
-<section class="slide break" data-label="Break">
-  <div class="kicker">Break</div>
-  <h1>10-minute break</h1>
-  <div class="timer" data-minutes="10"></div>
-  <p class="lead">Next: Session 4 · Evaluate, deploy &amp; capstone kickoff</p>
-</section>
 
 <!-- ======================= SESSION 4: EVALUATE & DEPLOY ======================= -->
 <section class="slide section" data-session="Session 4 · Evaluate & deploy">
