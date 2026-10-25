@@ -20,8 +20,11 @@ Each day runs Session 1 → short break → Session 2 → mid-day break → Sess
 ```
 index.html          course page (GitHub Pages)
 slides/             one HTML deck per day
-assets/             slide engine (deck.css, deck.js) and logo
 labs/               notebooks, data preparation, shared helpers, capstone kit (see labs/README.md)
 ```
 
 Labs run on Google Colab (one click from the course page) or locally with [uv](https://docs.astral.sh/uv/): see [labs/README.md](labs/README.md).
+
+The slide engine and the course-page style are shared by all Academy courses and served from
+[SDAIAAcademy/slides](https://github.com/SDAIAAcademy/slides); the decks declare `data-track="ai-engineering"`.
+Add `?check` to a deck's URL to run its layout self-check.
